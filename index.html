@@ -475,6 +475,12 @@ KeAttachProcess(IN PKPROCESS Process)
             </div>
 
             <h3 class="mono"><span class="mono" style="color: var(--text-muted);">//</span> Wine_HQ_Files</h3>
+            <div class="callout callout-info" style="margin-bottom: 1rem;">
+                <div class="callout-header mono">
+                    <span class="callout-title">🍷 Wine HQ</span>
+                </div>
+                <p style="font-size: 0.85rem;">Wine provides the most complete open-source Windows API implementation. Study these files to understand Windows internals without NDAs.</p>
+            </div>
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -483,37 +489,43 @@ KeAttachProcess(IN PKPROCESS Process)
                     <tbody>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/include/ntdef.h" target="_blank">ntdef.h</a></td>
-                            <td>Core Windows NT type definitions, PEB/TEB structures, LIST_ENTRY macros</td>
+                            <td>Core NT structures: PEB, TEB, LIST_ENTRY. Essential for understanding process memory layout and thread environment blocks used by all Windows programs.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/include/winternl.h" target="_blank">winternl.h</a></td>
-                            <td>Undocumented NTAPI functions, Rtl* APIs, internal kernel structures</td>
+                            <td>Undocumented NTAPI functions and Rtl* APIs. Critical for reverse engineering — reveals functions Microsoft never documents publicly.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/dlls/ntdll/processenv.c" target="_blank">processenv.c</a></td>
-                            <td>Process environment block access, CreateProcess internals, handle inheritance</td>
+                            <td>Process creation internals, environment block setup, handle inheritance. Learn how CreateProcess actually works under the hood.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/dlls/ntdll/virtual.c" target="_blank">virtual.c</a></td>
-                            <td>Virtual memory management, VAD tree implementation, page fault handling</td>
+                            <td>Virtual memory management, VAD trees, page protection. Essential for understanding memory allocation, VirtualProtect, and memory-mapped files.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/dlls/ntdll/thread.c" target="_blank">thread.c</a></td>
-                            <td>Thread creation/scheduling, TLS implementation, APC queue management</td>
+                            <td>Thread creation, TLS implementation, APC queues. Learn how Windows schedules threads and manages thread-local storage for malware analysis.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/dlls/kernel32/sync.c" target="_blank">sync.c</a></td>
-                            <td>Synchronization primitives: mutexes, semaphores, events, critical sections</td>
+                            <td>Synchronization primitives: mutexes, semaphores, events, critical sections. Essential for understanding race conditions and concurrent code.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/wine-mirror/wine/blob/master/include/winnt.h" target="_blank">winnt.h</a></td>
-                            <td>Complete Windows structure definitions, exception handling, security descriptors</td>
+                            <td>Complete Windows structure definitions, EXCEPTION_RECORD, SECURITY_DESCRIPTOR. The foundation for exception handling and access control.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <h3 class="mono"><span class="mono" style="color: var(--text-muted);">//</span> ReactOS_Files</h3>
+            <div class="callout callout-info" style="margin-bottom: 1rem;">
+                <div class="callout-header mono">
+                    <span class="callout-title">⚛️ ReactOS</span>
+                </div>
+                <p style="font-size: 0.85rem;">ReactOS implements the Windows NT kernel from scratch. Study these files to see actual kernel-mode code for process, memory, and object management.</p>
+            </div>
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -522,41 +534,47 @@ KeAttachProcess(IN PKPROCESS Process)
                     <tbody>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/ke/process.c" target="_blank">ke/process.c</a></td>
-                            <td>Process object creation, address space switching, process attachment</td>
+                            <td>Process object creation, address space switching, process attachment. Learn kernel-side process management used by task managers and debuggers.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/ke/thread.c" target="_blank">ke/thread.c</a></td>
-                            <td>KTHREAD structure, thread scheduling, wait blocks, context switching</td>
+                            <td>KTHREAD structure layout, thread scheduling, wait blocks, context switching. Essential for understanding how the scheduler manages CPU time.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/mm/ARM3/virtual.c" target="_blank">mm/ARM3/virtual.c</a></td>
-                            <td>Windows NT memory manager, section objects, memory-mapped files</td>
+                            <td>Windows NT memory manager, section objects, memory-mapped files. Critical for understanding file mapping, shared memory, and page faults.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/ob/objdir.c" target="_blank">ob/objdir.c</a></td>
-                            <td>Object manager namespace, directory structure, object parsing</td>
+                            <td>Object manager namespace, directory structure, object parsing. Learn how Windows organizes all kernel objects in a hierarchical filesystem-like structure.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/ob/obhandle.c" target="_blank">ob/obhandle.c</a></td>
-                            <td>Handle table implementation, reference counting, handle inheritance</td>
+                            <td>Handle table implementation, reference counting, handle inheritance. Foundation for understanding handle leaks and privilege escalation.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/io/iomgr/device.c" target="_blank">io/iomgr/device.c</a></td>
-                            <td>Device object creation, driver dispatch, IRP handling basics</td>
+                            <td>Device object creation, driver dispatch, IRP handling basics. Essential for driver development and understanding I/O completion ports.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/ps/create.c" target="_blank">ps/create.c</a></td>
-                            <td>Process/thread creation, PEB/TEB initialization, image loading</td>
+                            <td>Process/thread creation, PEB/TEB initialization, image loading. See how Windows loads executables and sets up the initial thread context.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/reactos/reactos/blob/master/ntoskrnl/include/internal/ob.h" target="_blank">include/internal/ob.h</a></td>
-                            <td>Object header structure, object type objects, callback mechanisms</td>
+                            <td>Object header structure, object type objects, callback mechanisms. Learn the internal structure preceding every kernel object for forensics.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <h3 class="mono"><span class="mono" style="color: var(--text-muted);">//</span> SystemInformer_Files</h3>
+            <div class="callout callout-info" style="margin-bottom: 1rem;">
+                <div class="callout-header mono">
+                    <span class="callout-title">🔍 SystemInformer</span>
+                </div>
+                <p style="font-size: 0.85rem;">SystemInformer (Process Hacker) shows how to query and analyze live Windows systems. Study these to build system monitoring and forensics tools.</p>
+            </div>
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -565,31 +583,31 @@ KeAttachProcess(IN PKPROCESS Process)
                     <tbody>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/phlib/native.c" target="_blank">phlib/native.c</a></td>
-                            <td>Native API wrappers, NtQuery* functions, system information classes</td>
+                            <td>Native API wrappers, NtQuery* functions, system information classes. Learn to query kernel data without documented APIs for security tools.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/Windows/ntos.h" target="_blank">Windows/ntos.h</a></td>
-                            <td>Comprehensive NT kernel structures, exported function prototypes</td>
+                            <td>Comprehensive NT kernel structures, exported function prototypes. The most complete public header set for Windows kernel reverse engineering.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/Plugins/ProcessHacker/procprp.c" target="_blank">procprp.c</a></td>
-                            <td>Process property enumeration, EPROCESS field parsing, handle counting</td>
+                            <td>Process property enumeration, EPROCESS field parsing, handle counting. Learn to extract process information for task managers and AV scanners.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/Plugins/ProcessHacker/thrdprp.c" target="_blank">thrdprp.c</a></td>
-                            <td>Thread enumeration, KTHREAD analysis, wait reason, stack walking</td>
+                            <td>Thread enumeration, KTHREAD analysis, wait reason, stack walking. Essential for building debuggers and thread analyzers.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/Plugins/ProcessHacker/memprp.c" target="_blank">memprp.c</a></td>
-                            <td>Memory map enumeration, VAD walk, protection flags, private bytes</td>
+                            <td>Memory map enumeration, VAD walk, protection flags, private bytes. Learn to analyze process memory for malware detection and forensics.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/Plugins/ProcessHacker/hndltree.c" target="_blank">hndltree.c</a></td>
-                            <td>Handle tree visualization, object reference tracking, handle leaks</td>
+                            <td>Handle tree visualization, object reference tracking, handle leaks. Critical for debugging resource leaks and rootkit detection.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/winsiderss/systeminformer/blob/master/Plugins/ProcessHacker/drvprp.c" target="_blank">drvprp.c</a></td>
-                            <td>Driver enumeration, module base addresses, driver memory regions</td>
+                            <td>Driver enumeration, module base addresses, driver memory regions. Learn to detect kernel modules for anti-rootkit and security auditing.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -604,23 +622,23 @@ KeAttachProcess(IN PKPROCESS Process)
                     <tbody>
                         <tr>
                             <td class="mono"><a href="https://github.com/microsoft/Windows-driver-samples" target="_blank">microsoft/Windows-driver-samples</a></td>
-                            <td>Official WDF/KMDF examples, driver templates, best practices from Microsoft</td>
+                            <td>Official WDF/KMDF examples, driver templates, best practices from Microsoft. Start here for legitimate driver development patterns and APIs.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/ionescu007/ntoskrnl" target="_blank">ionescu007/ntoskrnl</a></td>
-                            <td>Windows 10 kernel headers, structure definitions, research notes by Alex Ionescu</td>
+                            <td>Windows 10 kernel headers, structure definitions, research notes by Alex Ionescu. Advanced kernel internals from a Microsoft engineer.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/tandasat/Complete-Pe-Parse" target="_blank">tandasat/Complete-Pe-Parse</a></td>
-                            <td>PE file format parsing, section headers, import/export table resolution</td>
+                            <td>PE file format parsing, section headers, import/export table resolution. Essential for malware analysis and understanding executable loading.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/j00ru/windows_kernel_types" target="_blank">j00ru/windows_kernel_types</a></td>
-                            <td>Accurate kernel structure offsets for multiple Windows versions</td>
+                            <td>Accurate kernel structure offsets for multiple Windows versions. Critical for reverse engineering across different Windows builds.</td>
                         </tr>
                         <tr>
                             <td class="mono"><a href="https://github.com/Mandiant/flare-vm" target="_blank">Mandiant/flare-vm</a></td>
-                            <td>Reverse engineering VM setup, kernel debugging tools, analysis environment</td>
+                            <td>Reverse engineering VM setup, kernel debugging tools, analysis environment. Professional malware analysis toolkit configuration.</td>
                         </tr>
                     </tbody>
                 </table>
